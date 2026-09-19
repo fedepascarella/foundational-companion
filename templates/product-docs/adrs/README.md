@@ -15,5 +15,14 @@ Numbered MADR files. Git is the version history. Supersede with `Superseded-by: 
 | `0008-api-design.md` | API styles + security |
 | `0009-infra-architecture.md` | Compute, data, identity |
 | `0010-cicd.md` | Pipeline and branching |
+| `0011-llm-patterns.md` | LLM job (or no Gen AI) |
+| `0012-agentic-patterns.md` | Agent loop vs workflow |
+| `0013-agent-topology.md` | Agents and sub-agents |
+| `0014-rag-patterns.md` | Retrieval / grounding |
+| `0015-memory-management.md` | Memory |
+| `0016-tool-design.md` | Tools |
+| `0017-mcp-design.md` | MCP vs in-process |
+| `0018-prompt-caching.md` | Prompt cache |
+| `0019-llm-providers-frameworks.md` | Provider + framework |
 
-Copy [TEMPLATE.md](TEMPLATE.md) for each new ADR.
+Copy [TEMPLATE.md](TEMPLATE.md) for each new ADR. Gen AI ADRs are a **second pass** — skip 0011–0019 if the product has no LLM job. If invoked anyway, write only `0011-no-gen-ai.md`.

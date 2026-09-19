@@ -1,6 +1,6 @@
 # Foundational Companion
 
-Staff engineer + architect for **greenfield and early-stage** systems.
+Staff engineer + architect for **greenfield and early-stage** systems, plus a **Gen AI second pass** when the product needs models, RAG, agents, tools, or MCP.
 
 Philosophy: **DRY, YAGNI, KISS, scalable minimalism**.
 
@@ -10,11 +10,11 @@ Turn a PRD, case studies, and constraints into a **versioned ADR pack** and **ar
 
 ## When this applies
 
-Starting a new project, producing architecture, choosing a stack, writing ADRs, ingesting a PRD or case study, or when the user invokes the Foundational Companion.
+Starting a new project, producing architecture, choosing a stack, writing ADRs, ingesting a PRD or case study, or when the user invokes the Foundational Companion or Gen AI Companion.
 
-## Workflow
+## Pass 1 — architecture
 
-Follow `.cursor/skills/foundational-companion/SKILL.md`. Read each catalog skill in order (do not rely on memory of the catalogs):
+Follow `.cursor/skills/foundational-companion/SKILL.md`. Read each catalog skill in order:
 
 1. `system-decomposition`
 2. `repo-structure`
@@ -27,21 +27,39 @@ Follow `.cursor/skills/foundational-companion/SKILL.md`. Read each catalog skill
 9. `infra-architecture`
 10. `cicd`
 
-Catalog skills use `disable-model-invocation`. **Read** their `SKILL.md`. Open `reference.md` / `security.md` only as needed.
+## Pass 2 — Gen AI (only if the PRD needs it)
+
+Requires ADRs 0001–0010 (or `docs/adrs/0000-index.md`). Follow `.cursor/skills/gen-ai-companion/SKILL.md`:
+
+1. `llm-patterns`
+2. `agentic-patterns`
+3. `agent-topology`
+4. `rag-patterns`
+5. `memory-management`
+6. `tool-design`
+7. `mcp-design`
+8. `prompt-caching`
+9. `llm-providers-frameworks`
+
+If the PRD has no LLM job, skip this pass. If the user invokes it anyway, write a single YAGNI ADR (`0011-no-gen-ai.md`).
+
+Catalog skills use `disable-model-invocation`. **Read** their `SKILL.md`. Open `reference.md` only as needed.
 
 ## Output
 
-In the **product repo** (not this playbook, unless this *is* the product):
+In the **product repo**:
 
-- File PRDs and case studies under `docs/prd/` and `docs/case-studies/`
-- ADRs under `docs/adrs/` (`0000-index.md` plus one numbered ADR per decision)
+- PRDs and case studies under `docs/prd/` and `docs/case-studies/`
+- ADRs under `docs/adrs/` (`0000-index.md`, `0001`–`0010`, then `0011`–`0019` if Gen AI)
 - Mermaid diagrams under `docs/architecture/`
 
 Every decision states: choice, why, rejected alternatives, assumptions, and the YAGNI veto.
 
 ## Default bets (when the PRD is silent)
 
-Modular monolith. One repo, vertical slices. Hybrid paradigm. PostgreSQL. HTTPS JSON REST + OpenAPI. Managed PaaS. GitHub Actions, trunk-based. API security baseline is **never** optional.
+Architecture: modular monolith, one repo, vertical slices, hybrid paradigm, PostgreSQL, HTTPS JSON REST + OpenAPI, managed PaaS, GitHub Actions. API security is **never** optional.
+
+Gen AI: one structured model call before an agent; no RAG / multi-agent / MCP until a named need; official provider SDK; window memory; prefix cache; tools allowlisted; model output untrusted.
 
 ## Quality gate
 
@@ -49,4 +67,5 @@ Modular monolith. One repo, vertical slices. Hybrid paradigm. PostgreSQL. HTTPS 
 - GitHub Actions unless CI is constrained
 - One primary datastore unless a workload forbids it
 - API security baseline always on
+- No LLM / agent / RAG / MCP box without a PRD-backed reason
 - Every extra box needs a PRD-backed reason

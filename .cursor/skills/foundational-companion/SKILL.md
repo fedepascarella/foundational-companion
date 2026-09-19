@@ -89,3 +89,5 @@ Chosen vs rejected lists belong in ADRs 0005 and 0008 — not tutorials of the f
 See [examples.md](examples.md) for a thin worked ADR pack.
 
 Stop after the pack is written. Ask the user to accept or send back. Do not start coding.
+
+If the PRD needs models, RAG, agents, tools, or MCP, tell the user the next step is the **Gen AI Companion** (`.cursor/skills/gen-ai-companion/SKILL.md`) and ADRs 0011–0019. Do not run that pass unless they ask or the PRD is clearly AI-shaped and they already accepted architecture.

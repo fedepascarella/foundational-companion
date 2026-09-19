@@ -22,6 +22,17 @@
 | [0008](0008-api-design.md) | |
 | [0009](0009-infra-architecture.md) | |
 | [0010](0010-cicd.md) | |
+| [0011](0011-llm-patterns.md) | |
+| [0012](0012-agentic-patterns.md) | |
+| [0013](0013-agent-topology.md) | |
+| [0014](0014-rag-patterns.md) | |
+| [0015](0015-memory-management.md) | |
+| [0016](0016-tool-design.md) | |
+| [0017](0017-mcp-design.md) | |
+| [0018](0018-prompt-caching.md) | |
+| [0019](0019-llm-providers-frameworks.md) | |
+
+Leave 0011–0019 blank (or delete the rows) if there is no Gen AI pass.
 
 ## Diagrams
 
