@@ -1,0 +1,15 @@
+---
+description: Core engineering philosophy for the Foundational Companion — DRY, YAGNI, KISS, scalable minimalism.
+alwaysApply: true
+---
+
+# Engineering philosophy
+
+Drivers: **DRY, YAGNI, KISS, scalable minimalism**.
+
+- Ship the smallest system that satisfies the PRD. No speculative modules, services, stores, or pipeline stages.
+- Prefer a modular monolith, one repo, one primary datastore (PostgreSQL), HTTPS JSON REST, and GitHub Actions until a named constraint forces otherwise.
+- DRY applies to *knowledge and invariants*, not to premature shared libraries. Duplicate once; extract on the third use.
+- One reason to change per module. Extend at boundaries; do not abstract for a single caller.
+- Every extra box in an ADR needs a PRD-backed reason and a one-line YAGNI veto for the simpler alternative.
+- State assumptions. Do not hide tradeoffs. Do not implement the product unless asked.
